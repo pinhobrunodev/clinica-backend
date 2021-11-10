@@ -1,10 +1,12 @@
 package com.pinhobrunodev.clinica.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 
 @Getter
@@ -25,5 +27,10 @@ public class Paciente extends Auditable{
     private String celular;
     @Column(columnDefinition = "TEXT")
     private String cargoAtual;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
+    private LocalDate dataNascimento;
 
+    public Paciente() {
+    }
 }
