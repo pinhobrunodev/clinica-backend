@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -35,6 +37,12 @@ public class Funcionario extends Auditable{
             inverseJoinColumns =
                     { @JoinColumn(name = "usuario_id", referencedColumnName = "id") })
     private Usuario usuario;
+
+    @ManyToMany
+    @JoinTable(name = "tb_funcionario_endereco"
+            ,joinColumns = @JoinColumn(name = "funcionario_id")
+            ,inverseJoinColumns = @JoinColumn(name = "endereco_id"))
+    private Set<Endereco> enderecos = new HashSet<>();
 
 
     public Funcionario() {
