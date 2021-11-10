@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
 public class Medico extends Funcionario{
 
     @Column(columnDefinition = "TEXT")
