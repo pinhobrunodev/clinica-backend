@@ -31,6 +31,7 @@ public class Funcionario extends Auditable{
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
     private AreaAtuacao areaAtuacao;
+    private String crm;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "tb_funcionario_usuario",
@@ -45,6 +46,12 @@ public class Funcionario extends Auditable{
             ,joinColumns = @JoinColumn(name = "funcionario_id")
             ,inverseJoinColumns = @JoinColumn(name = "endereco_id"))
     private Set<Endereco> enderecos = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "tb_medico_especialidade"
+            ,joinColumns = @JoinColumn(name = "medico_id")
+            ,inverseJoinColumns = @JoinColumn(name = "especialidade_id"))
+    private Set<Especialidade> especialidades = new HashSet<>();
 
 
     public Funcionario() {
