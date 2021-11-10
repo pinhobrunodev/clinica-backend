@@ -8,15 +8,14 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_especialidade")
-public class Especialidade extends Auditable {
-
+@Table(name = "tb_role")
+public class Role extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String autoridade;
 
-    public Especialidade() {
+    public Role() {
     }
 }
