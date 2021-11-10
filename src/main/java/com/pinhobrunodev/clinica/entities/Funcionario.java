@@ -10,8 +10,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tb_funcionario")
-public class Funcionario extends Auditable{
+public abstract class Funcionario extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
