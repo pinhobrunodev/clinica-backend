@@ -1,6 +1,7 @@
 package com.pinhobrunodev.clinica.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.pinhobrunodev.clinica.enums.AreaAtuacao;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,6 +30,7 @@ public class Funcionario extends Auditable{
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
+    private AreaAtuacao areaAtuacao;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "tb_funcionario_usuario",

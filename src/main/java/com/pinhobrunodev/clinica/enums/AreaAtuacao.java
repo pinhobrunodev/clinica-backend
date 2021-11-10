@@ -1,5 +1,5 @@
 package com.pinhobrunodev.clinica.enums;
 
-public enum Job {
+public enum AreaAtuacao {
     MEDICO,RECEPCAO,LIMPEZA,SEGURANCA
 }
