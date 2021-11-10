@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -30,6 +32,12 @@ public class Paciente extends Auditable{
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
+
+    @ManyToMany
+    @JoinTable(name = "tb_paciente_convenio"
+            ,joinColumns = @JoinColumn(name = "paciente_id")
+            ,inverseJoinColumns = @JoinColumn(name = "convenio_id"))
+    private Set<Convenio> convenios = new HashSet<>();
 
     public Paciente() {
     }
