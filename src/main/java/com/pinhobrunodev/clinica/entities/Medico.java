@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "tb_medico")
 public class Medico extends Funcionario{
 
     @Column(columnDefinition = "TEXT")
