@@ -1,10 +1,14 @@
 package com.pinhobrunodev.clinica.entities;
 
-import javax.persistence.Column;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+import lombok.Getter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
 import java.time.Instant;
 
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@Getter
 public abstract class Auditable {
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
