@@ -25,6 +25,10 @@ public class Usuario extends Auditable {
             ,inverseJoinColumns = @JoinColumn(name = "cargo_id"))
     private Set<Cargo> cargos = new HashSet<>();
 
+
+    @OneToOne(mappedBy = "usuario")
+    private Funcionario funcionario;
+
     public Usuario() {
     }
 

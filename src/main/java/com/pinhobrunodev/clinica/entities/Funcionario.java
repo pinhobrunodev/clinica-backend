@@ -21,11 +21,21 @@ public class Funcionario extends Auditable{
     private String rg;
     private String orgaoEmissor;
     private String cpf;
+    private String email;
     private String telefone;
     private String celular;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "tb_funcionario_usuario",
+            joinColumns =
+                    { @JoinColumn(name = "funcionario_id", referencedColumnName = "id") },
+            inverseJoinColumns =
+                    { @JoinColumn(name = "usuario_id", referencedColumnName = "id") })
+    private Usuario usuario;
+
 
     public Funcionario() {
     }
