@@ -1,30 +1,28 @@
 package com.pinhobrunodev.clinica.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 public abstract class Auditable {
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant criadoEm;
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant atualizadoEm;
+    @CreatedDate
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy HH:mm:ss")
+    private final LocalDateTime criadoEm = LocalDateTime.now();
+    @LastModifiedDate
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy HH:mm:ss")
+    private final LocalDateTime atualizadoEm = LocalDateTime.now();
 
-    @PrePersist
-    public void PrePersist() {
-        criadoEm = Instant.now();
-    }
-
-    @PreUpdate
-    public void PreUpdate() {
-        atualizadoEm = Instant.now();
-    }
 
 
 }
