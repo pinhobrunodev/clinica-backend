@@ -31,6 +31,7 @@ public class Funcionario extends Auditable{
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private LocalDate dataNascimento;
     private AreaAtuacao areaAtuacao;
+    private boolean isMedico;
     private String crm;
 
     @OneToOne(cascade = CascadeType.ALL)
